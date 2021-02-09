@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>OX 퀴즈</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+    <div class="con">
+      <div class="num">
+        Question 1
+      </div>
+      <div class="question">
+        <br><br>
+       <%= result[c].content %>
+      </div>
+      <div class="grid">
+        <div class="result" id="O">
+              <img src="/images/correct.JPG" style= "border-radius : 30px;"alt="O">
+        </div>
+        <div class="result" id="X">
+              <img src="/images/fail.JPG" style= "border-radius : 30px;alt="X">
+        </div>
+      </div>
+      <div id="main">
+      <button id="pause" onclick="togglePause()">Pause</button>
+      <div id="handData"></div>
+      <div></div>
+ 
+</div>
+    </body>
+</html>
+<script src="http://js.leapmotion.com/leap-0.6.3.min.js"></script>
+<script>
+// Store frame for motion functions
+var previousFrame = null;
+var paused = false;
+
+// Setup Leap loop with frame callback function
+var controllerOptions = {};
+
+// to use HMD mode:
+// controllerOptions.optimizeHMD = true;
+
+Leap.loop(controllerOptions, function(frame) {
+  if (paused) {
+    return; // Skip this update
+  }
+
+  // Display Hand object data
+  var handOutput = document.getElementById("handData");
+  var handString = "";
+  if (frame.hands.length > 0) {
+    for (var i = 0; i < frame.hands.length; i++) {
+      var hand = frame.hands[i];
+
+      handString += "<div style='width:300px; float:left; padding:5px'>";
+      handString += "Grab strength: " + hand.grabStrength + "<br />";
+      if(hand.grabStrength == 1)
+      {
+        location.href='/users/1';
+
+      }     
+      else if(hand.grabStrength == 0)
+      {
+        location.href='/users/2';
+      }   
+      handString += "</div>";
+    }
+  }
+  else {
+    handString += "No hands";
+  }
+  handOutput.innerHTML = handString;
+
+  // Display Pointable (finger) object data
+  
+  // Store frame for motion functions
+  previousFrame = frame;
+})
+
+function togglePause() {
+  paused = !paused;
+
+  if (paused) {
+    document.getElementById("pause").innerText = "Resume";
+  } else {
+    document.getElementById("pause").innerText = "Pause";
+  }
+}
+
+</script>
