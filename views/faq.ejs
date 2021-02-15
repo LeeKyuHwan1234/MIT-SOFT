@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+    <header>
+        <%- include('header/header.ejs') %>
+    </header>
+
+ <!-- ======= F.A.Q Section ======= -->
+ <section id="faq" class="faq">
+
+    <div class="container" data-aos="fade-up" style="margin-top: 150px; margin-bottom: 200px;">
+
+      <header class="section-header">
+        <h2>F.A.Q</h2>
+        <p>자주 하는 질문</p>
+      </header>
+
+    
+      <div style="margin-left: 200px;">
+          <!-- F.A.Q List 1-->
+          <div class="accordion accordion-flush" id="faqlist1" style="width: 80%;">
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-1">
+                  어떤 사이트 인가요?
+                </button>
+              </h2>
+              <div id="faq-content-1" class="accordion-collapse collapse" data-bs-parent="#faqlist1">
+                <div class="accordion-body">
+                  다양한 OX 퀴즈들을 통해서 치매를 예방하기 위한 사이트 입니다.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-2">
+                  MIT SOFT 회사의 전화 번호를 알고 싶습니다.
+                </button>
+              </h2>
+              <div id="faq-content-2" class="accordion-collapse collapse" data-bs-parent="#faqlist1">
+                <div class="accordion-body">
+                    <strong>Tel.</strong> 041 - 417 - 6007 로 전화 주시기 바랍니다.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion-item">
+              <h2 class="accordion-header">
+                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-3">
+                  MIT SOFT 회사의 팩스 번호를 알고 싶습니다.
+                </button>
+              </h2>
+              <div id="faq-content-3" class="accordion-collapse collapse" data-bs-parent="#faqlist1">
+                <div class="accordion-body">
+                    <strong>FAX.</strong> 041 - 417 - 6008 로 보내주시기 바랍니다.
+                </div>
+              </div>
+            </div>
+
+            <div class="accordion accordion-flush" id="faqlist2">
+
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2-content-1">
+                      MIT SOFT 회사의 이메일 주소를 알고 싶습니다.
+                    </button>
+                  </h2>
+                  <div id="faq2-content-1" class="accordion-collapse collapse" data-bs-parent="#faqlist2">
+                    <div class="accordion-body">
+                        <strong>Email.</strong> mit@mitsoft.co.kr 로 문의 해주시기 바랍니다.
+                    </div>
+                  </div>
+                </div>
+    
+                <div class="accordion-item">
+                  <h2 class="accordion-header">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq2-content-2">
+                      MIT SOFT 회사의 위치가 어디 인가요?
+                    </button>
+                  </h2>
+                  <div id="faq2-content-2" class="accordion-collapse collapse" data-bs-parent="#faqlist2">
+                    <div class="accordion-body">
+                        31131 충청남도 천안시 동남구 버들로 40 (문화동) 천안시지식산업센터 401호 ㈜엠아이티소프트 <br>
+                    </div>
+                  </div>
+                </div>
+    
+              </div>
+            </div>
+
+         
+
+       
+
+      </div>
+
+    </div>
+
+  </section><!-- End F.A.Q Section -->
+
+  <!-- ======= Footer ======= -->
+  <footer>
+    <%- include('footer/footer.ejs') %>
+  </footer>
+
+</body>
+</html>

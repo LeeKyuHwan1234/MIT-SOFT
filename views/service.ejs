@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+    <header>
+        <%- include('header/header.ejs') %>
+    </header>
+
+    <!-- ======= Service Section ======= -->
+    <section id="contact" class="contact">
+
+      <div class="container" data-aos="fade-up" style="margin-top: 150px;margin-bottom: 200px;">
+
+        <header class="section-header">
+          <h2>문의 사항</h2>
+          <p>문의 하기</p>
+        </header>
+
+        <div class="row gy-4">
+
+          <div class="col-lg-6">
+
+            <div class="row gy-4">
+              <div class="col-md-6">
+                <div class="info-box">
+                  <i class="bi bi-geo-alt"></i>
+                  <h3>주소</h3>
+                  <p>31131 충청남도 천안시 동남구<br> 버들로 40 (문화동), 401호<br>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="info-box">
+                  <i class="bi bi-telephone"></i>
+                  <h3>전화 번호</h3>
+                  <p><strong>Tel :</strong> 041 - 417 - 6007<br>
+                    <strong>FAX :</strong> 041 - 417 - 6008 <br></p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="info-box">
+                  <i class="bi bi-envelope"></i>
+                  <h3>Email</h3>
+                  <p><strong>Email :</strong> mit@mitsoft.co.kr<pre></pre></p>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="info-box">
+                  <i class="bi bi-clock"></i>
+                  <h3>운영 시간</h3>
+                  <p>월요일 - 금요일<br>9:00AM - 05:00PM</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="col-lg-6">
+            <form action="forms/contact.php" method="post" class="php-email-form">
+              <div class="row gy-4">
+
+                <div class="col-md-6">
+                  <input type="text" name="name" class="form-control" placeholder="성함" required>
+                </div>
+
+                <div class="col-md-6 ">
+                  <input type="email" class="form-control" name="email" placeholder="이메일 주소" required>
+                </div>
+
+                <div class="col-md-12">
+                  <input type="text" class="form-control" name="subject" placeholder="제목" required>
+                </div>
+
+                <div class="col-md-12">
+                  <textarea class="form-control" name="message" rows="6" placeholder="문의 내용" required></textarea>
+                </div>
+
+                <div class="col-md-12 text-center">
+                    <button type="submit" style="outline:none" data-toggle="modal" data-target="#intro">전송 하기</button>
+                </div>
+
+              </div>
+            </form>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </section><!-- End Contact Section -->
+  </main><!-- End #main -->
+
+  <div class="modal fade" id="intro" role="dialog" aria-labelledby="introHeader" aria-hidden="true" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">MIT SOFT</h4>
+            </div>
+            <div class="modal-body">                        
+                <p>관리자에게 이메일이 전송 되었습니다!</p>
+                <p>확인 이후 해당 이메일로 답장 드리겠습니다.</p>                    
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">닫기</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+  <!-- ======= Footer ======= -->
+  <footer>
+    <%- include('footer/footer.ejs') %>
+  </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
+    <header>
+        <%- include('header/header.ejs') %>
+    </header>
+
+    <!-- ======= Quiz Section ======= -->
+    <section id="services" class="services" style="margin-bottom: 200px; margin-top: 100px;">
+
+      <div class="container" data-aos="fade-up">
+
+        <header class="section-header">
+          <p>O X 퀴즈 게임</p>
+        </header>
+
+        <div class="quiz-container">
+          <div id="quiz"> </div> 
+        </div>
+
+        <div class="row gy-4" style="margin-left: 320px;">
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
+            <div class="service-box blue">
+              <img src="assets/img/circle.png" class="img-fluid" alt=""><br><br><br><br>
+              <h3>" 맞 다 "</h3>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
+            <div class="service-box red">
+              <img src="assets/img/X.png" class="img-fluid" alt=""><br><br><br><br>
+              <h3>" 아 니 다 "</h3>
+            </div>
+          </div>
+        </div>
+
+        <div style="position: relative; text-align: center; margin-top: 60px;">
+          <div class="quiz-ctrl">
+            <button id="previous" class="btn btn-outline-primary btn-lg"> < Back </button>
+            <button type="button" id="next" class="btn btn-outline-primary btn-lg"> Next > </button>
+            <button id="submit" class="btn btn-success btn-lg"> 결과확인 </button>
+            <div id="result"> </div>
+         </div>
+        </div>
+
+      </div>
+
+    </section><!-- End Quiz Section -->
+  </main><!-- End #main -->
+
+  <!-- ======= Footer ======= -->
+  <footer>
+    <%- include('footer/footer.ejs') %>
+  </footer>
+
+</body>
+
+<script src="../javascripts/quiz.js"></script>
+
+</html>
