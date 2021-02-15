@@ -1,12 +1,13 @@
 const { TooManyRequests } = require('http-errors')
 const mysql = require('mysql')
+require('dotenv').config();
 
 const db_config = {
-    host: '127.0.0.1',
-    port: '3306',
-    user : 'root',
-    password: 'zkfrnrtn12',
-    database: 'test'
+    host : process.env.DB_host,
+    port : process.env.DB_port,
+    user : process.env.DB_user,
+    password : process.env.DB_password,
+    database : process.env.DB_database
 };
 
 const db = mysql.createConnection(db_config);
