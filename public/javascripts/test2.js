@@ -1,4 +1,6 @@
 var count = 1;
+var count2 = 1;
+
 if (localStorage.getItem('count')) {
   count = localStorage.getItem('count');
 }
@@ -17,14 +19,21 @@ $(".prev-btn").click(function () {
 
 // 다음 문제
 $(".next-btn").click(function () {
-  count++;
-  if (count > 10) {
+ 
+  console.log('a' + count);
+  if (count > 9) {
     count = 10;
-    alert("마지막 문제입니다.");
+    alert("야호");
+    localStorage.clear();
   }
+
+  count++;
+  
   localStorage.setItem('count', count);
+  
   location.href = "http://localhost:3000/quiz/" + count;
 })
+
 
 // 정답 체크
 $("#checkBtn").click(function (e) {
@@ -63,3 +72,46 @@ window.onclick = function(event) {
       modal.style.display = "none";
   }
 }
+
+// Store frame for motion functions
+var previousFrame = null;
+var paused = false;
+
+// Setup Leap loop with frame callback function
+var controllerOptions = {};
+
+// to use HMD mode:
+// controllerOptions.optimizeHMD = true;
+
+Leap.loop(controllerOptions, function(frame) {
+
+  var handString = "";
+  if (frame.hands.length > 0) {
+    for (var i = 0; i < frame.hands.length; i++) {
+      var hand = frame.hands[i];
+      
+      if(hand.grabStrength == 1)
+      {
+        count2++;
+        console.log(count2);
+
+        if(count2 == 100){
+
+          
+          $(".next-btn").trigger("click", function () {
+            console.log(count);
+            count++;
+          })
+
+          count2 = 0;
+          
+        }
+      }     
+      
+    }
+  }
+  // Display Pointable (finger) object data
+  
+  // Store frame for motion functions
+  previousFrame = frame;
+})
