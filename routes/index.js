@@ -15,7 +15,7 @@ router.get('/', function(req, res, next) {
         throw error;
     }    
     else {
-        res.render('quiz', {'result' : result, lotto : lottoNum()});
+        res.render('quiz', {'result' : result});
     };
   });
 });
