@@ -2,11 +2,11 @@ const { TooManyRequests } = require('http-errors')
 const mysql = require('mysql')
 
 const db_config = {
-    host: '127.0.0.1',
+    host: 'localhost',
     port: '3306',
     user : 'root',
-    password: 'zkfrnrtn12',
-    database: 'test'
+    password: '!pma20161496',
+    database: 'quiz'
 };
 
 const db = mysql.createConnection(db_config);
