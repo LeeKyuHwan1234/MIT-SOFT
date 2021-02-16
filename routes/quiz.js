@@ -2,39 +2,40 @@ var express = require('express');
 var router = express.Router();
 var db = require('../config/db');
 var fs = require('fs');
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  db.query(`select * from problem`, function (error, result) {
-    if (error) {
-        throw error;
-    }    
-    else {
-        res.render('quiz', {'result' : result, lotto : lottoNum()});
-    };
-});
-});
+
+const { createConnection } = require('net');
 
 
-function lottoNum () {
-  let lotto = [];
-  let i = 0;
-  while (i < 10) {
-  let n = Math.floor(Math.random() * 85) + 1;
-  if (! sameNum(n)) {
-    lotto.push(n);
-    i++;
-  }
-  }
-  function sameNum (n) {
-  for (var i = 0; i < lotto.length; i++) {
-  if (n === lotto[i]) {
-    return true;
-  }
-  }
-    return false;
-  }
-    return lotto;
-  }
-  console.log(lottoNum());
+
+
+  // MySQL 연결
   
-module.exports = router;
+  router.get('/:pid', function (req, res) {
+    var stmt = "SELECT * FROM problem WHERE pid=" + req.params.pid;
+    db.query(stmt, function (err, result) {
+       if (err) throw err;
+       var result = result[0];
+       res.render('quiz.ejs', {
+           title: 'content',
+           result: result,
+           check: "answer"
+        });
+      })
+  });
+
+  router.post('/:pid', function (req, res) {
+    var stmt = "SELECT * FROM problem WHERE pid=" + req.params.pid;
+      db.query(stmt, function (err, result) {
+        if (err) throw err;
+
+        if (result[0].answer == req.body.answer) {
+            res.send(true);
+        } else {
+            res.send(false);
+        }
+    })
+});
+
+  
+
+  module.exports = router;

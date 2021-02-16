@@ -3,7 +3,7 @@
 
 <body>
     <header>
-        <%- include('header/header.ejs') %>
+        <%include ./header/header  %>
     </header>
 
     <!-- ======= Quiz Section ======= -->
@@ -15,47 +15,60 @@
           <p>O X 퀴즈 게임</p>
         </header>
 
-        <div class="quiz-container">
-          <div id="quiz"> </div> 
-        </div>
+        <section style="margin-left: 70px;">
+          <button class="prev-btn">
+            <i class="im im-angle-left"></i>
+          </button>
+          <section class="content >
+            <p id="Q">Q: <%= result.content %></p>
+            <input type="text" class="answer" />
+          </section>
+          <button class="next-btn">
+            <i class="im im-angle-right"></i>
+          </button>
+        </section>
 
         <div class="row gy-4" style="margin-left: 320px;">
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="200">
             <div class="service-box blue">
-              <img src="assets/img/circle.png" class="img-fluid" alt=""><br><br><br><br>
+              <img src="./assets/img/circle.png" class="img-fluid" alt=""><br><br><br><br>
               <h3>" 맞 다 "</h3>
             </div>
           </div>
 
           <div class="col-lg-4 col-md-6" data-aos="fade-up" data-aos-delay="500">
             <div class="service-box red">
-              <img src="assets/img/X.png" class="img-fluid" alt=""><br><br><br><br>
+              <img src="./assets/img/X.png" class="img-fluid" alt=""><br><br><br><br>
               <h3>" 아 니 다 "</h3>
             </div>
           </div>
-        </div>
 
-        <div style="position: relative; text-align: center; margin-top: 60px;">
-          <div class="quiz-ctrl">
-            <button id="previous" class="btn btn-outline-primary btn-lg"> < Back </button>
-            <button type="button" id="next" class="btn btn-outline-primary btn-lg"> Next > </button>
-            <button id="submit" class="btn btn-success btn-lg"> 결과확인 </button>
-            <div id="result"> </div>
-         </div>
+          <button class="btn" id="checkBtn" data-value="<%= result.pid %>">정답 확인</button>
         </div>
-
       </div>
 
     </section><!-- End Quiz Section -->
+
+  
+    <!-- 모달창 -->
+    <div id="myModal" class="modal">
+      <div class="modal-content">
+        <p class="check-answer"></p>
+        <button class="close">다시 풀어 보기</button>
+        <button class="close">다음 문제로</button>
+      </div>
+    </div>
+
   </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
   <footer>
-    <%- include('footer/footer.ejs') %>
+    <%include ./footer/footer.ejs  %>
   </footer>
 
 </body>
 
-<script src="../javascripts/quiz.js"></script>
+<script src="../javascripts/test2.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
 </html>
