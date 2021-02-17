@@ -23,7 +23,7 @@ $(".next-btn").click(function () {
   console.log('a' + count);
   if (count > 9) {
     count = 10;
-    alert("야호");
+    alert(" 무야호");
     localStorage.clear();
   }
 
@@ -32,6 +32,7 @@ $(".next-btn").click(function () {
   localStorage.setItem('count', count);
   
   location.href = "http://localhost:3000/quiz/" + count;
+  localStorage.clear();
 })
 
 
@@ -110,8 +111,5 @@ Leap.loop(controllerOptions, function(frame) {
       
     }
   }
-  // Display Pointable (finger) object data
-  
-  // Store frame for motion functions
   previousFrame = frame;
 })
