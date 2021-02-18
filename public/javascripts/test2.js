@@ -24,9 +24,10 @@ function lottoNum () {
   }
     return lotto;
   }
-  
+
 if (localStorage.getItem('count')) {
   count = localStorage.getItem('count');
+  localStorage.clear();
 }
 
 // 이전 문제
@@ -46,12 +47,14 @@ $(".next-btn").click(function () {
   console.log('a' + count);
   if (count > 9) {
     count = 10;
-    alert(" 무야호");
+    location.href = "http://localhost:3000/quiz/end/end" ;
+    alert("게임이 끝났습니다.");
   }
- count++;
- localStorage.setItem('count', count);
- location.href = "http://localhost:3000/quiz/" + c;
- 
+  else {
+    count++;
+    localStorage.setItem('count', count);
+    location.href = "http://localhost:3000/quiz/" + c;
+  }
 })
 
 
@@ -116,6 +119,9 @@ Leap.loop(controllerOptions, function(frame) {
           $(".next-btn").trigger("click", function () {
             count++;
           })
+          $("#checkBtn").trigger("click", function () {
+            count++;
+          })
           count2 = 0;
         }
       }
@@ -125,7 +131,6 @@ Leap.loop(controllerOptions, function(frame) {
         if(count3 == 100){
           console.log('보자기');
           localStorage.clear();
-          
           $(".next-btn").trigger("click", function () {
           count++;
          })
