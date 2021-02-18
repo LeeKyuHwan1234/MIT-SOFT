@@ -53,8 +53,14 @@ $(".prev-btn").click(function () {
 // 다음 문제
 $(".next-btn").click(function () {
   
-  if (count > 4) {
+  if (count > 9) {
     alert(scoreTest(correct));
+
+    $.ajax({
+      type: "POST",
+      url: "http://localhost:3000/quiz/score/score",
+      data: {"score": scoreTest(correct)}
+    });
     localStorage.clear();
     location.href = "http://localhost:3000/quiz/end/end" ;
   }
@@ -95,6 +101,7 @@ $("#checkBtn").click(function (e) {
     }
   });
   e.preventDefault();
+
 })
 
 // 모달
@@ -142,11 +149,7 @@ Leap.loop(controllerOptions, function(frame) {
                 count++;
               })}, 2000)
           });
-
-         
-         
-
-          count2 = 0;
+           count2 = 0;
         }
       }
       else if (hand.grabStrength == 0){
@@ -177,6 +180,7 @@ Leap.loop(controllerOptions, function(frame) {
   // Store frame for motion functions
   previousFrame = frame;
 })
+
 
 function scoreTest(correct){
   var score = (correct * 5);

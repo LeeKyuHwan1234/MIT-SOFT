@@ -19,7 +19,7 @@ router.get('/:pid', function (req, res) {
            title: 'content',
            result: result,
            check: "answer",
-           lotto:lottoNum()
+           lotto:lottoNum(),
         });
       })
   });
@@ -35,7 +35,20 @@ router.get('/:pid', function (req, res) {
             res.send(false);
         }
     })
-});
+  });
+  router.post('/score/score', function (req, res) {
+    var stmt = "INSERT INTO User SET score =" + req.body.score;
+      db.query(stmt, function (err, result) {
+        if (err) throw err;
+        if (req.body.score != null) {
+            res.send(true);
+            console.log('score');
+        } else {
+            res.send(false);
+        }
+    })
+  });
+
 router.get('/end/end', function (req, res) {
   res.render('end');
 });
@@ -62,6 +75,5 @@ function lottoNum () {
   }
     return lotto;
   }
-  console.log(lottoNum());
 
   module.exports = router;
