@@ -3,7 +3,8 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-
+var session = require('express-session');
+var FileStore = require('session-file-store')(session)
 var indexRouter = require('./routes/index');
 var quizRouter = require('./routes/quiz');
 var serviceRouter = require('./routes/service');
@@ -33,6 +34,17 @@ app.use('/rule', ruleRouter);
 app.use('/service', serviceRouter);
 app.use('/company', companyRouter);
 app.use('/introduce', introduceRouter);
+
+app.use(session({
+  name: 'sessionID',
+  secret: 'asdhgasdsdgaasdg',
+  resave: false,
+  saveUninitialized: true,
+  store: new FileStore(),
+  cookie: {
+    maxAge: 24000 * 60 * 60 // 쿠키 유효기간 24시간
+  }
+}));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
