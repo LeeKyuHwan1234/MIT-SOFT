@@ -9,6 +9,10 @@ const { createConnection } = require('net');
 
   // MySQL 연결
   
+router.get('/end', function (req, res) {
+  res.render('end',{lotto:lottoNum()});
+});
+
 router.get('/:pid', function (req, res) {
     var c = lottoNum();
     var stmt = "SELECT * FROM problem WHERE pid=" + c;
@@ -49,9 +53,6 @@ router.get('/:pid', function (req, res) {
     })
   });
 
-router.get('/end/end', function (req, res) {
-  res.render('end');
-});
 
 
   
