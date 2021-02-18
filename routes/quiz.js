@@ -18,7 +18,9 @@ router.get('/:pid', function (req, res) {
        res.render('quiz.ejs', {
            title: 'content',
            result: result,
-           check: "answer"
+           check: "answer",
+           lotto : lottoNum()
+           
         });
       })
   });
@@ -35,6 +37,10 @@ router.get('/:pid', function (req, res) {
         }
     })
 });
+router.get('/end/end', function (req, res) {
+  res.render('end');
+});
+
 
   
 function lottoNum () {
