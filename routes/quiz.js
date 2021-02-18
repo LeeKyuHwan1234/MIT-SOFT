@@ -19,8 +19,7 @@ router.get('/:pid', function (req, res) {
            title: 'content',
            result: result,
            check: "answer",
-           lotto : lottoNum()
-           
+           lotto:lottoNum()
         });
       })
   });

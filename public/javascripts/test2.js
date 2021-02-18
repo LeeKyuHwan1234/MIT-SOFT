@@ -1,6 +1,9 @@
 var count = 1;
 var count2 = 1;
 var count3 =1;
+var score = 0;
+var five = 5;
+var correct = 0;
 
 var c = lottoNum();
       
@@ -27,6 +30,11 @@ function lottoNum () {
 
 if (localStorage.getItem('count')) {
   count = localStorage.getItem('count');
+  localStorage.removeItem('count');
+}
+
+if (localStorage.getItem('correct')) {
+  correct = localStorage.getItem('correct');
   localStorage.clear();
 }
 
@@ -44,11 +52,11 @@ $(".prev-btn").click(function () {
 
 // 다음 문제
 $(".next-btn").click(function () {
-  console.log('a' + count);
-  if (count > 9) {
-    count = 10;
+  
+  if (count > 4) {
+    alert(scoreTest(correct));
+    localStorage.clear();
     location.href = "http://localhost:3000/quiz/end/end" ;
-    alert("게임이 끝났습니다.");
   }
   else {
     count++;
@@ -68,8 +76,17 @@ $("#checkBtn").click(function (e) {
     data: {"answer": answer},
     success: function (response) {
       if (response == true) {
-        $(".check-answer").html("정답입니다.");
-      } else {
+      
+        $(document).ready(function() {
+          $(".check-answer").html("정답입니다.");
+          correct++;
+          localStorage.setItem('correct', correct);
+          console.log('맞췃수'+correct);
+        });
+       } 
+      else {
+        console.log('틀렸수'+correct);
+        localStorage.setItem('correct', correct);
         $(".check-answer").html("틀렸습니다.");
       }
     },
@@ -115,13 +132,20 @@ Leap.loop(controllerOptions, function(frame) {
         console.log(count2);
         if(count2 == 100){
           console.log('주먹');
-          localStorage.clear();
-          $(".next-btn").trigger("click", function () {
-            count++;
-          })
-          $("#checkBtn").trigger("click", function () {
-            count++;
-          })
+          $(document).ready(function() {
+            $('.answer').val('O');
+            $("#checkBtn").trigger("click", function () {
+              count++;
+            })
+            setTimeout(function(){
+              $(".next-btn").trigger("click", function () {
+                count++;
+              })}, 2000)
+          });
+
+         
+         
+
           count2 = 0;
         }
       }
@@ -130,11 +154,21 @@ Leap.loop(controllerOptions, function(frame) {
         console.log(count3);
         if(count3 == 100){
           console.log('보자기');
-          localStorage.clear();
-          $(".next-btn").trigger("click", function () {
-          count++;
-         })
-        count2 = 0;
+          $(document).ready(function() {
+            $('.answer').val('X');
+            
+            $("#checkBtn").trigger("click", function () {
+              count++;
+            })
+
+            setTimeout(function(){
+              $(".next-btn").trigger("click", function () {
+                count++;
+              })}, 2000)
+            
+          });
+
+        count3 = 0;
         }
       }     
     }
@@ -143,3 +177,8 @@ Leap.loop(controllerOptions, function(frame) {
   // Store frame for motion functions
   previousFrame = frame;
 })
+
+function scoreTest(correct){
+  var score = (correct * 5);
+  return score;
+}

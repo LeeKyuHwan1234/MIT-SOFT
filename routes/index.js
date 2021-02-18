@@ -6,7 +6,7 @@ var fs = require('fs');
 /* GET home page. */
 
 router.get('/', function(req, res, next) {
-        res.render('index', {'result' : result, lotto : lottoNum()});
+        res.render('index', {lotto : lottoNum()});
 });
 
 function lottoNum () {
