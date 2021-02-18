@@ -7,11 +7,11 @@ const { createConnection } = require('net');
 
 
 
-
   // MySQL 연결
   
-  router.get('/:pid', function (req, res) {
-    var stmt = "SELECT * FROM problem WHERE pid=" + req.params.pid;
+router.get('/:pid', function (req, res) {
+    var c = lottoNum();
+    var stmt = "SELECT * FROM problem WHERE pid=" + c;
     db.query(stmt, function (err, result) {
        if (err) throw err;
        var result = result[0];
@@ -37,5 +37,26 @@ const { createConnection } = require('net');
 });
 
   
+function lottoNum () {
+  let lotto = [];
+  let i = 0;
+  while (i < 1) {
+  let n = Math.floor(Math.random() * 85) + 1;
+  if (! sameNum(n)) {
+    lotto.push(n);
+    i++;
+  }
+  }
+  function sameNum (n) {
+  for (var i = 0; i < lotto.length; i++) {
+  if (n === lotto[i]) {
+    return true;
+  }
+  }
+    return false;
+  }
+    return lotto;
+  }
+  console.log(lottoNum());
 
   module.exports = router;

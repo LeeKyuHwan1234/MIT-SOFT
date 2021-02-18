@@ -1,6 +1,30 @@
 var count = 1;
 var count2 = 1;
+var count3 =1;
 
+var c = lottoNum();
+      
+function lottoNum () {
+  let lotto = [];
+  let i = 0;
+  while (i < 1) {
+    let n = Math.floor(Math.random() * 85) + 1;
+    if (! sameNum(n)) {
+      lotto.push(n);
+      i++;
+    }
+  }
+  function sameNum (n) {
+  for (var i = 0; i < lotto.length; i++) {
+    if (n === lotto[i]) {
+      return true;
+    }
+  }
+    return false;
+  }
+    return lotto;
+  }
+  
 if (localStorage.getItem('count')) {
   count = localStorage.getItem('count');
 }
@@ -14,25 +38,20 @@ $(".prev-btn").click(function () {
     alert("첫 번째 문제입니다.");
   }
   localStorage.setItem('count', count);
-  location.href = "http://localhost:3000/quiz/" + count;
+  location.href = "http://localhost:3000/quiz/" + c;
 })
 
 // 다음 문제
 $(".next-btn").click(function () {
- 
   console.log('a' + count);
   if (count > 9) {
     count = 10;
     alert(" 무야호");
-    localStorage.clear();
   }
-
-  count++;
-  
-  localStorage.setItem('count', count);
-  
-  location.href = "http://localhost:3000/quiz/" + count;
-  localStorage.clear();
+ count++;
+ localStorage.setItem('count', count);
+ location.href = "http://localhost:3000/quiz/" + c;
+ 
 })
 
 
@@ -73,7 +92,6 @@ window.onclick = function(event) {
       modal.style.display = "none";
   }
 }
-
 // Store frame for motion functions
 var previousFrame = null;
 var paused = false;
@@ -85,31 +103,38 @@ var controllerOptions = {};
 // controllerOptions.optimizeHMD = true;
 
 Leap.loop(controllerOptions, function(frame) {
-
-  var handString = "";
   if (frame.hands.length > 0) {
     for (var i = 0; i < frame.hands.length; i++) {
       var hand = frame.hands[i];
       
-      if(hand.grabStrength == 1)
-      {
+      if(hand.grabStrength == 1){
         count2++;
         console.log(count2);
-
         if(count2 == 100){
-
-          
+          console.log('주먹');
+          localStorage.clear();
           $(".next-btn").trigger("click", function () {
-            console.log(count);
             count++;
           })
-
           count2 = 0;
+        }
+      }
+      else if (hand.grabStrength == 0){
+        count3++;
+        console.log(count3);
+        if(count3 == 100){
+          console.log('보자기');
+          localStorage.clear();
           
+          $(".next-btn").trigger("click", function () {
+          count++;
+         })
+        count2 = 0;
         }
       }     
-      
     }
   }
+  // Display Pointable (finger) object data
+  // Store frame for motion functions
   previousFrame = frame;
 })
