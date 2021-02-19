@@ -11,7 +11,7 @@ function lottoNum () {
   let lotto = [];
   let i = 0;
   while (i < 1) {
-    let n = Math.floor(Math.random() * 85) + 1;
+    let n = Math.floor(Math.random() * 292) + 1;
     if (! sameNum(n)) {
       lotto.push(n);
       i++;
@@ -62,7 +62,7 @@ $(".next-btn").click(function () {
       data: {"score": scoreTest(correct)}
     });
     localStorage.clear();
-    location.href = "http://localhost:3000/quiz/end/end" ;
+    location.href = "http://localhost:3000/quiz/end" ;
   }
   else {
     count++;
