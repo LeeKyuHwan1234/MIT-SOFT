@@ -54,7 +54,7 @@ $(".prev-btn").click(function () {
 $(".next-btn").click(function () {
   
   if (count > 9) {
-    alert(scoreTest(correct));
+    alert('당신의 점수는 '+ scoreTest(correct)+'점 입니다!');
 
     $.ajax({
       type: "POST",
