@@ -5,11 +5,12 @@ var router = express.Router();
 router.get('/', function(req, res, next) {
   res.render('rule', {  lotto : lottoNum() });
 });
+
 function lottoNum () {
   let lotto = [];
   let i = 0;
   while (i < 1) {
-  let n = Math.floor(Math.random() * 292) + 1;
+  let n = Math.floor(Math.random() * 160) + 1;
   if (! sameNum(n)) {
     lotto.push(n);
     i++;
